@@ -5,3 +5,16 @@ before install:
  - docker build -t yashas/docker-react-new -f Dockerfile.dev .
 script:
  - docker run yasha/docker-react-new npm run teat -- --coverage
+deploy:
+ provider: elasticbeanstalk
+ region: "ind-south-3"
+ app: "docker"
+ env: "Docker-env"
+ bucket_name: "elasticbeanstalk-ind-soutn-3-12345343433"
+ bucket_path: "docker"
+on:
+ branch: master
+ access_key_id: "$AWS_ACCESS_KEY"
+ secret_access_key:
+   secure: "$AWS_SECRET_KEY"
+
