@@ -1,0 +1,7 @@
+sudo: required
+service:
+ -docker
+before install:
+ - docker build -t yashas/docker-react-new -f Dockerfile.dev .
+script:
+ - docker run yasha/docker-react-new npm run teat -- --coverage
